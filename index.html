@@ -75,7 +75,10 @@
         img {
             display: block;
             width: 100%;
+            max-height: 100%;
             position: relative;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
         }
 
         .img-container .subtitle {
@@ -96,7 +99,8 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background-color: rgba(0, 0, 0, .7);
+            /*background-color: rgba(0, 0, 0, .7);*/
+            background-color: rgba(255, 255, 255, .7);
             /*display: flex;*/
             align-items: center;
             justify-content: center;
@@ -104,12 +108,17 @@
             opacity: 0;
         }
         .modal {
-            max-height: 90%;
+            height: 90%;
             max-width: 90%;
             pointer-events: none;
         }
-        .modal-content {
-            width: 100%;
+        /*.modal-content {*/
+        /*    width: 100%;*/
+        /*    height: 100%;*/
+        /*}*/
+        .modal img {
+            max-width: 100%;
+            max-height: 100%;
         }
 
     </style>
@@ -201,7 +210,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col">
                 <div class="img-container">
@@ -226,12 +234,108 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-tska/S012.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-tska/S013.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-tska/S014.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-tska/S015.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <div class="col">
-            <div class="img-container">
-                <img src="./img-tska/S011.jpg">
-                <div class="subtitle">
-                    subtitle text
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-tska/S016.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-tska/S017.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+                <div class="img-container">
+                    <img src="./img-tska/S018.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-tska/S019.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-tska/S020.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-tska/S021.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-tska/S022.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+                <div class="img-container">
+                    <img src="./img-tska/S023.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
                 </div>
             </div>
         </div>
@@ -240,9 +344,9 @@
 
 <div class="modal-back">
     <div class="modal">
-        <div class="modal-content">
-            <img src="./img-tska/2022-04-09-Nicosie-2.jpg">
-        </div>
+<!--        <div class="modal-content">-->
+            <img src="">
+<!--        </div>-->
     </div>
 </div>
 
@@ -257,6 +361,7 @@
     const rows = Array.from(document.querySelectorAll(".row"));
     const clickable = Array.from(document.querySelectorAll(".img-container"));
     const modalBack = document.querySelector(".modal-back");
+    const modalImg = modalBack.querySelector("img");
 
 
     rows.forEach(r => {
@@ -288,7 +393,9 @@
 
     clickable.forEach(img => {
         img.onclick = function () {
-            // load img
+            const filename = img.querySelector("img").src.replace(/^.*[\\\/]/, '');
+            // console.log(filename.replace("S", "L"))
+            modalImg.src = "./img-tska/" + filename.replace("S", "L");
             openModal();
         }
     })

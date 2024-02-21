@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .page {
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            max-width: 600px;
+            margin: 0 auto;
+            /*--pic-padding: 6px;*/
+        }
+
+
+        .header {
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .header > * {
+            padding: 0 var(--pic-padding);
+        }
+
+        .header .title {
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: .2em;
+        }
+
+        .gallery {
+            width: 100%;
+            position: relative;
+            margin-bottom: 200px;
+        }
+
+        .row {
+            display: flex;
+            padding-bottom: var(--pic-padding);
+            justify-content: space-around;
+        }
+        .col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .col > *:not(:first-child) {
+            padding-top: var(--pic-padding);
+        }
+
+
+        .img-container {
+            width: 100%;
+            position: relative;
+            cursor: pointer;
+        }
+        img {
+            display: block;
+            width: 100%;
+            position: relative;
+        }
+
+        .img-container .subtitle {
+            position: absolute;
+            left: 0;
+            bottom: 15px;
+            padding: 4px 15px;
+            background-color: rgba(255, 255, 255, .7);
+            opacity: 0;
+            width: 100%;
+        }
+
+        
+        
+        .modal-back {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, .7);
+            /*display: flex;*/
+            align-items: center;
+            justify-content: center;
+            display: none;
+            opacity: 0;
+        }
+        .modal {
+            max-height: 90%;
+            max-width: 90%;
+            pointer-events: none;
+        }
+        .modal-content {
+            width: 100%;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<canvas></canvas>
+
+<div class="page">
+    <div class="header">
+        <div class="title">
+            DAVID TACHÉ
+        </div>
+        <div class="subtitle">
+            French photographer based in Caucasus
+        </div>
+    </div>
+
+
+    <div class="gallery">
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-miro/____8.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-miro/____39.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-miro/____43.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-miro/____7.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-miro/____32.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+                <div class="img-container">
+                    <img src="./img-miro/____12.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-miro/____30.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-miro/____15.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-miro/____42.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-miro/____26.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+                <div class="img-container">
+                    <img src="./img-miro/____11.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="img-container">
+                <img src="./img-miro/____3.jpg">
+                <div class="subtitle">
+                    subtitle text
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-back">
+    <div class="modal">
+        <div class="modal-content">
+            <img src="./img-miro/2022-04-09-Nicosie-2.jpg">
+        </div>
+    </div>
+</div>
+
+
+<script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
+
+
+<script>
+    const containerWidth = document.querySelector(".page").clientWidth;
+    const padding = 5;
+    document.querySelector(".page").style.setProperty('--pic-padding', padding + "px");
+    const rows = Array.from(document.querySelectorAll(".row"));
+    const clickable = Array.from(document.querySelectorAll(".img-container"));
+    const modalBack = document.querySelector(".modal-back");
+
+
+    rows.forEach(r => {
+        const cols = Array.from(r.querySelectorAll(".col"));
+
+        const colRatios = [];
+        let totalAspectRatio = 0;
+
+        cols.forEach((c, cIdx) => {
+            const images = Array.from(c.querySelectorAll("img"));
+            let w = images[0].naturalWidth, h = 0;
+            images.forEach(image => {
+                h += (image.naturalHeight);
+            });
+            if (images.length > 1) {
+                w -= 2.5 * padding;
+            }
+            colRatios[cIdx] = w / h;
+            totalAspectRatio += colRatios[cIdx];
+        });
+
+        cols.forEach((c, cIdx) => {
+            const pxWidth = ((containerWidth - cols.length * padding) * colRatios[cIdx] / totalAspectRatio);
+            c.style.width = (pxWidth / containerWidth * 100) + "%";
+        });
+
+
+    })
+
+    clickable.forEach(img => {
+        img.onclick = function () {
+            // load img
+            openModal();
+        }
+    })
+
+    modalBack.onclick = function () {
+        closeModal();
+    }
+
+    function openModal() {
+        gsap.timeline({})
+            .set(modalBack, {
+                height: window.innerHeight,
+                display: "flex"
+            }, 0)
+            .to(modalBack, {
+                duration: .25,
+                opacity: 1
+            }, 0)
+    }
+    function closeModal() {
+        gsap.timeline({})
+            .to(modalBack, {
+                duration: .25,
+                opacity: 0
+            }, 0)
+            .set(modalBack, {
+                display: "none"
+            })
+    }
+</script>
+
+
+</body>
+</html>

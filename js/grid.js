@@ -6,6 +6,7 @@ const clickable = Array.from(document.querySelectorAll(".img-container"));
 const modalBack = document.querySelector(".modal-back");
 const modalImg = modalBack.querySelector("img");
 
+// document.addEventListener("DOMContentLoaded", () => {
 
 rows.forEach(r => {
     const cols = Array.from(r.querySelectorAll(".col"));
@@ -30,22 +31,18 @@ rows.forEach(r => {
         const pxWidth = ((containerWidth - cols.length * padding) * colRatios[cIdx] / totalAspectRatio);
         c.style.width = (pxWidth / containerWidth * 100) + "%";
     });
-
-
 })
 
-clickable.forEach(img => {
-    img.onclick = function () {
-        const filename = img.querySelector("img").src.replace(/^.*[\\\/]/, '');
-        // console.log(filename.replace("S", "L"))
-        modalImg.src = "./img-main/" + filename.replace("S", "L");
-        openModal();
-    }
+gsap.to(".gallery", {
+    duration: .2,
+    opacity: 1
 })
 
 modalBack.onclick = function () {
     closeModal();
 }
+
+// }
 
 function openModal() {
     gsap.timeline({})

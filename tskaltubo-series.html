@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLEMPTT5FF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'G-PLEMPTT5FF');
+    </script>
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
     <title>DAVID TACHÉ | French photographer based in Caucasus</title>
     <link rel="stylesheet" href="css/main.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 </head>
 
 <body>
@@ -18,6 +37,10 @@
         </div>
         <div class="subtitle">
             French photographer based in Caucasus
+        </div>
+
+        <div class="navbar">
+            <a href="./">home</a><a href="./tskaltubo-series.html" class="active">Tskhaltubo Series</a><a class="about-link" href="./about.html">about</a>
         </div>
     </div>
 
@@ -235,7 +258,15 @@
 
 <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
 <script src="./js/grid.js"></script>
-
+<script>
+    clickable.forEach(img => {
+        img.onclick = function () {
+            const filename = img.querySelector("img").src.replace(/^.*[\\\/]/, '');
+            modalImg.src = "./img-tska/" + filename.replace("S", "L");
+            openModal();
+        }
+    })
+</script>
 
 </body>
 </html>

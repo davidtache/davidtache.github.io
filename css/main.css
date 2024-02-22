@@ -30,7 +30,6 @@ html, body {
     padding-top: 1em;
     margin-bottom: .5em;
     background-color: rgba(255, 255, 255, .98);
-    /*outline: 3px dashed white;*/
     z-index: 1;
 }
 
@@ -47,33 +46,29 @@ html, body {
     margin-top: 1em;
     display: flex;
     justify-content: flex-start;
+    margin-bottom: .9em;
 }
 .header .navbar a {
     display: inline-block;
-    color: inherit;
-    /*color: #ffffff;*/
-    /*background-color: #222222;*/
+    color: #ffffff;
+    background-color: #222222;
     text-transform: lowercase;
-    /*text-decoration: none;*/
-    font-size: .8em;
-    /*padding: .3em .6em;*/
-    /*border-radius: 1px;*/
+    text-decoration: none;
+    font-size: .9em;
+    padding: .3em .6em;
+    border-radius: 1px;
     user-select: none;
     margin-right: var(--pic-padding);
 }
 
 .header .navbar a:hover {
-    color: #333366;
-    /*background-color: #444444;*/
-}
-.header .navbar a.about-link {
-    margin-left: auto;
-    margin-right: 0;
+    /*color: #333366;*/
+    background-color: #444444;
 }
 .header .navbar a.active {
     text-decoration: none;
-    /*color: #000000;*/
-    /*background-color: #cccccc;*/
+    color: #000000;
+    background-color: #cccccc;
     pointer-events: none;
 }
 

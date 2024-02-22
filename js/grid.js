@@ -6,43 +6,41 @@ const clickable = Array.from(document.querySelectorAll(".img-container"));
 const modalBack = document.querySelector(".modal-back");
 const modalImg = modalBack.querySelector("img");
 
-// document.addEventListener("DOMContentLoaded", () => {
+window.onload = function () {
+    rows.forEach(r => {
+        const cols = Array.from(r.querySelectorAll(".col"));
 
-rows.forEach(r => {
-    const cols = Array.from(r.querySelectorAll(".col"));
+        const colRatios = [];
+        let totalAspectRatio = 0;
 
-    const colRatios = [];
-    let totalAspectRatio = 0;
-
-    cols.forEach((c, cIdx) => {
-        const images = Array.from(c.querySelectorAll("img"));
-        let w = images[0].naturalWidth, h = 0;
-        images.forEach(image => {
-            h += (image.naturalHeight);
+        cols.forEach((c, cIdx) => {
+            const images = Array.from(c.querySelectorAll("img"));
+            let w = images[0].naturalWidth, h = 0;
+            images.forEach(image => {
+                h += (image.naturalHeight);
+            });
+            if (images.length > 1) {
+                w -= 2.5 * padding;
+            }
+            colRatios[cIdx] = w / h;
+            totalAspectRatio += colRatios[cIdx];
         });
-        if (images.length > 1) {
-            w -= 2.5 * padding;
-        }
-        colRatios[cIdx] = w / h;
-        totalAspectRatio += colRatios[cIdx];
-    });
 
-    cols.forEach((c, cIdx) => {
-        const pxWidth = ((containerWidth - cols.length * padding) * colRatios[cIdx] / totalAspectRatio);
-        c.style.width = (pxWidth / containerWidth * 100) + "%";
-    });
-})
+        cols.forEach((c, cIdx) => {
+            const pxWidth = ((containerWidth - cols.length * padding) * colRatios[cIdx] / totalAspectRatio);
+            c.style.width = (pxWidth / containerWidth * 100) + "%";
+        });
+    })
 
-gsap.to(".gallery", {
-    duration: .2,
-    opacity: 1
-})
+    gsap.to(".gallery", {
+        duration: .2,
+        opacity: 1
+    })
 
-modalBack.onclick = function () {
-    closeModal();
+    modalBack.onclick = function () {
+        closeModal();
+    }
 }
-
-// }
 
 function openModal() {
     gsap.timeline({})

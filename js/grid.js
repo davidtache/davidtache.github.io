@@ -20,7 +20,7 @@ window.onload = function () {
                 h += (image.naturalHeight);
             });
             if (images.length > 1) {
-                w -= 2.5 * padding;
+                w -= 1 * padding;
             }
             colRatios[cIdx] = w / h;
             totalAspectRatio += colRatios[cIdx];

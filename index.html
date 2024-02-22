@@ -3,130 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
 
-        html, body {
-            padding: 0;
-            margin: 0;
-        }
-
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            opacity: 0;
-        }
-
-        .page {
-            font-family: "Montserrat", sans-serif;
-            font-optical-sizing: auto;
-            font-weight: 400;
-            font-style: normal;
-            max-width: 600px;
-            margin: 0 auto;
-            /*--pic-padding: 6px;*/
-        }
-
-
-        .header {
-            height: 150px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .header > * {
-            padding: 0 var(--pic-padding);
-        }
-
-        .header .title {
-            font-size: 30px;
-            font-weight: 500;
-            margin-bottom: .2em;
-        }
-
-        .gallery {
-            width: 100%;
-            position: relative;
-            margin-bottom: 200px;
-        }
-
-        .row {
-            display: flex;
-            padding-bottom: var(--pic-padding);
-            justify-content: space-around;
-        }
-        .col {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .col > *:not(:first-child) {
-            padding-top: var(--pic-padding);
-        }
-
-
-        .img-container {
-            width: 100%;
-            position: relative;
-            cursor: pointer;
-        }
-        img {
-            display: block;
-            width: 100%;
-            max-height: 100%;
-            position: relative;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-        }
-
-        .img-container .subtitle {
-            position: absolute;
-            left: 0;
-            bottom: 15px;
-            padding: 4px 15px;
-            background-color: rgba(255, 255, 255, .7);
-            opacity: 0;
-            width: 100%;
-        }
-
-        
-        
-        .modal-back {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            /*background-color: rgba(0, 0, 0, .7);*/
-            background-color: rgba(255, 255, 255, .7);
-            /*display: flex;*/
-            align-items: center;
-            justify-content: center;
-            display: none;
-            opacity: 0;
-        }
-        .modal {
-            height: 90%;
-            max-width: 90%;
-            pointer-events: none;
-        }
-        /*.modal-content {*/
-        /*    width: 100%;*/
-        /*    height: 100%;*/
-        /*}*/
-        .modal img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-
-    </style>
+    <title>DAVID TACHÉ | French photographer based in Caucasus</title>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-
-<canvas></canvas>
 
 <div class="page">
     <div class="header">
@@ -143,7 +25,7 @@
         <div class="row">
             <div class="col">
                 <div class="img-container">
-                    <img src="./img-tska/S01.jpg">
+                    <img src="./img-main/S01.jpg">
                     <div class="subtitle">
                         subtitle text
                     </div>
@@ -153,7 +35,7 @@
         <div class="row">
             <div class="col">
                 <div class="img-container">
-                    <img src="./img-tska/S02.jpg">
+                    <img src="./img-main/S02.jpg">
                     <div class="subtitle">
                         subtitle text
                     </div>
@@ -161,31 +43,7 @@
             </div>
             <div class="col">
                 <div class="img-container">
-                    <img src="./img-tska/S03.jpg">
-                    <div class="subtitle">
-                        subtitle text
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="img-container">
-                    <img src="./img-tska/S04.jpg">
-                    <div class="subtitle">
-                        subtitle text
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="img-container">
-                    <img src="./img-tska/S05.jpg">
-                    <div class="subtitle">
-                        subtitle text
-                    </div>
-                </div>
-                <div class="img-container">
-                    <img src="./img-tska/S06.jpg">
+                    <img src="./img-main/S03.jpg">
                     <div class="subtitle">
                         subtitle text
                     </div>
@@ -195,15 +53,7 @@
         <div class="row">
             <div class="col">
                 <div class="img-container">
-                    <img src="./img-tska/S07.jpg">
-                    <div class="subtitle">
-                        subtitle text
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="img-container">
-                    <img src="./img-tska/S08.jpg">
+                    <img src="./img-main/S04.jpg">
                     <div class="subtitle">
                         subtitle text
                     </div>
@@ -213,7 +63,7 @@
         <div class="row">
             <div class="col">
                 <div class="img-container">
-                    <img src="./img-tska/S09.jpg">
+                    <img src="./img-main/S05.jpg">
                     <div class="subtitle">
                         subtitle text
                     </div>
@@ -221,13 +71,7 @@
             </div>
             <div class="col">
                 <div class="img-container">
-                    <img src="./img-tska/S010.jpg">
-                    <div class="subtitle">
-                        subtitle text
-                    </div>
-                </div>
-                <div class="img-container">
-                    <img src="./img-tska/S011.jpg">
+                    <img src="./img-main/S06.jpg">
                     <div class="subtitle">
                         subtitle text
                     </div>
@@ -237,7 +81,7 @@
         <div class="row">
             <div class="col">
                 <div class="img-container">
-                    <img src="./img-tska/S012.jpg">
+                    <img src="./img-main/S07.jpg">
                     <div class="subtitle">
                         subtitle text
                     </div>
@@ -247,7 +91,7 @@
         <div class="row">
             <div class="col">
                 <div class="img-container">
-                    <img src="./img-tska/S013.jpg">
+                    <img src="./img-main/S08.jpg">
                     <div class="subtitle">
                         subtitle text
                     </div>
@@ -255,7 +99,7 @@
             </div>
             <div class="col">
                 <div class="img-container">
-                    <img src="./img-tska/S014.jpg">
+                    <img src="./img-main/S09.jpg">
                     <div class="subtitle">
                         subtitle text
                     </div>
@@ -265,7 +109,329 @@
         <div class="row">
             <div class="col">
                 <div class="img-container">
-                    <img src="./img-tska/S015.jpg">
+                    <img src="./img-main/S010.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S011.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S012.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S013.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S014.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S015.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S016.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S017.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S018.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+                <div class="img-container">
+                    <img src="./img-main/S019.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S020.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S021.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S022.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S023.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S024.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S025.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S026.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S027.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S028.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+                <div class="img-container">
+                    <img src="./img-main/S029.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S030.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S031.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S032.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S033.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+                <div class="img-container">
+                    <img src="./img-main/S034.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S035.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S036.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S037.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S038.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S039.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S040.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S041.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S042.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S043.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S044.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S045.jpg">
+                    <div class="subtitle">
+                        subtitle text
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="img-container">
+                    <img src="./img-main/S046.jpg">
                     <div class="subtitle">
                         subtitle text
                     </div>
@@ -273,159 +439,20 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col">
-                <div class="img-container">
-                    <img src="./img-tska/S016.jpg">
-                    <div class="subtitle">
-                        subtitle text
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="img-container">
-                    <img src="./img-tska/S017.jpg">
-                    <div class="subtitle">
-                        subtitle text
-                    </div>
-                </div>
-                <div class="img-container">
-                    <img src="./img-tska/S018.jpg">
-                    <div class="subtitle">
-                        subtitle text
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="img-container">
-                    <img src="./img-tska/S019.jpg">
-                    <div class="subtitle">
-                        subtitle text
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="img-container">
-                    <img src="./img-tska/S020.jpg">
-                    <div class="subtitle">
-                        subtitle text
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="img-container">
-                    <img src="./img-tska/S021.jpg">
-                    <div class="subtitle">
-                        subtitle text
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="img-container">
-                    <img src="./img-tska/S022.jpg">
-                    <div class="subtitle">
-                        subtitle text
-                    </div>
-                </div>
-                <div class="img-container">
-                    <img src="./img-tska/S023.jpg">
-                    <div class="subtitle">
-                        subtitle text
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
     </div>
 </div>
 
 <div class="modal-back">
     <div class="modal">
-<!--        <div class="modal-content">-->
-            <img src="">
-<!--        </div>-->
+        <img src="">
     </div>
 </div>
 
 
 <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
-
-
-<script>
-    const containerWidth = document.querySelector(".page").clientWidth;
-    const padding = 5;
-    document.querySelector(".page").style.setProperty('--pic-padding', padding + "px");
-    const rows = Array.from(document.querySelectorAll(".row"));
-    const clickable = Array.from(document.querySelectorAll(".img-container"));
-    const modalBack = document.querySelector(".modal-back");
-    const modalImg = modalBack.querySelector("img");
-
-
-    rows.forEach(r => {
-        const cols = Array.from(r.querySelectorAll(".col"));
-
-        const colRatios = [];
-        let totalAspectRatio = 0;
-
-        cols.forEach((c, cIdx) => {
-            const images = Array.from(c.querySelectorAll("img"));
-            let w = images[0].naturalWidth, h = 0;
-            images.forEach(image => {
-                h += (image.naturalHeight);
-            });
-            if (images.length > 1) {
-                w -= 2.5 * padding;
-            }
-            colRatios[cIdx] = w / h;
-            totalAspectRatio += colRatios[cIdx];
-        });
-
-        cols.forEach((c, cIdx) => {
-            const pxWidth = ((containerWidth - cols.length * padding) * colRatios[cIdx] / totalAspectRatio);
-            c.style.width = (pxWidth / containerWidth * 100) + "%";
-        });
-
-
-    })
-
-    clickable.forEach(img => {
-        img.onclick = function () {
-            const filename = img.querySelector("img").src.replace(/^.*[\\\/]/, '');
-            // console.log(filename.replace("S", "L"))
-            modalImg.src = "./img-tska/" + filename.replace("S", "L");
-            openModal();
-        }
-    })
-
-    modalBack.onclick = function () {
-        closeModal();
-    }
-
-    function openModal() {
-        gsap.timeline({})
-            .set(modalBack, {
-                height: window.innerHeight,
-                display: "flex"
-            }, 0)
-            .to(modalBack, {
-                duration: .25,
-                opacity: 1
-            }, 0)
-    }
-    function closeModal() {
-        gsap.timeline({})
-            .to(modalBack, {
-                duration: .25,
-                opacity: 0
-            }, 0)
-            .set(modalBack, {
-                display: "none"
-            })
-    }
-</script>
+<script src="./js/grid.js"></script>
 
 
 </body>

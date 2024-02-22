@@ -45,7 +45,7 @@ window.onload = function () {
 function openModal() {
     gsap.timeline({})
         .set(modalBack, {
-            height: window.innerHeight,
+            height: "100vh",
             display: "flex"
         }, 0)
         .to(modalBack, {

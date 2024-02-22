@@ -10,19 +10,27 @@ window.onload = function () {
     rows.forEach(r => {
         const cols = Array.from(r.querySelectorAll(".col"));
 
-        const colRatios = [];
-        let totalAspectRatio = 0;
-
-        cols.forEach((c, cIdx) => {
+        const colSizes = [];
+        cols.forEach(c => {
             const images = Array.from(c.querySelectorAll("img"));
             let w = images[0].naturalWidth, h = 0;
             images.forEach(image => {
                 h += (image.naturalHeight);
             });
-            if (images.length > 1) {
-                w -= 1 * padding;
+            colSizes.push([w, h]);
+        });
+
+        cols.forEach((c, cIdx) => {
+            const images = Array.from(c.querySelectorAll("img"));
+            if (images.length === 2) {
+                colSizes[cIdx === 0 ? 1 : 0][1] -= padding;
             }
-            colRatios[cIdx] = w / h;
+        });
+
+        let totalAspectRatio = 0;
+        const colRatios = [];
+        cols.forEach((c, cIdx) => {
+            colRatios[cIdx] = colSizes[cIdx][0] / colSizes[cIdx][1];
             totalAspectRatio += colRatios[cIdx];
         });
 

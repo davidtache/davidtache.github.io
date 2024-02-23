@@ -1,4 +1,4 @@
-const containerWidth = document.querySelector(".page").clientWidth;
+let containerWidth = document.querySelector(".page").clientWidth;
 const padding = 7;
 document.querySelector(".page").style.setProperty('--pic-padding', padding + "px");
 const rows = Array.from(document.querySelectorAll(".row"));
@@ -7,6 +7,19 @@ const modalBack = document.querySelector(".modal-back");
 const modalImg = modalBack.querySelector("img");
 
 window.onload = function () {
+    resizeGrid();
+    gsap.to(".gallery", {
+        duration: .2,
+        opacity: 1
+    })
+
+    modalBack.onclick = function () {
+        closeModal();
+    }
+}
+
+function resizeGrid() {
+    containerWidth = document.querySelector(".page").clientWidth;
     rows.forEach(r => {
         const cols = Array.from(r.querySelectorAll(".col"));
 
@@ -20,34 +33,25 @@ window.onload = function () {
             colSizes.push([w, h]);
         });
 
-        cols.forEach((c, cIdx) => {
-            const images = Array.from(c.querySelectorAll("img"));
-            if (images.length === 2) {
-                colSizes[cIdx === 0 ? 1 : 0][1] -= padding;
-            }
-        });
-
         let totalAspectRatio = 0;
         const colRatios = [];
         cols.forEach((c, cIdx) => {
             colRatios[cIdx] = colSizes[cIdx][0] / colSizes[cIdx][1];
+            if (c.classList.contains("fix-1")) {
+                colRatios[cIdx] += 3.5 * (padding / containerWidth);
+            } else if (c.classList.contains("fix-2")) {
+                colRatios[cIdx] += .95 * (padding / containerWidth);
+            } else if (c.classList.contains("fix-3")) {
+                colRatios[cIdx] += (padding / containerWidth);
+            }
             totalAspectRatio += colRatios[cIdx];
         });
 
         cols.forEach((c, cIdx) => {
-            const pxWidth = ((containerWidth - cols.length * padding) * colRatios[cIdx] / totalAspectRatio);
+            let pxWidth = ((containerWidth - cols.length * padding) * colRatios[cIdx] / totalAspectRatio);
             c.style.width = (pxWidth / containerWidth * 100) + "%";
         });
     })
-
-    gsap.to(".gallery", {
-        duration: .2,
-        opacity: 1
-    })
-
-    modalBack.onclick = function () {
-        closeModal();
-    }
 }
 
 function openModal() {
@@ -72,3 +76,5 @@ function closeModal() {
             display: "none"
         })
 }
+
+window.onresize = resizeGrid;

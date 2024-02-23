@@ -51,9 +51,9 @@ html, body {
 .header .navbar a {
     display: inline-block;
     color: inherit;
-    text-transform: lowercase;
+    text-transform: uppercase;
     text-decoration: none;
-    font-size: .95em;
+    font-size: .8em;
     border-radius: 1px;
     user-select: none;
     padding: .4em;

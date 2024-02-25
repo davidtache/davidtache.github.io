@@ -10,6 +10,7 @@ html, body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    width: 100%;
     max-width: 600px;
     margin: 0 auto;
     --pic-padding: 7px;
@@ -120,6 +121,7 @@ img {
     background-color: rgba(255, 255, 255, .7);
     opacity: 0;
     width: 100%;
+    display: none;
 }
 .img-container:hover {
     filter: brightness(.85);

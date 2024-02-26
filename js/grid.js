@@ -6,6 +6,9 @@ const clickable = Array.from(document.querySelectorAll(".img-container"));
 const modalBack = document.querySelector(".modal-back");
 const modalImg = modalBack.querySelector("img");
 
+let modalOpen = false;
+let clickedIdx = 0;
+
 window.onload = function () {
     resizeGrid();
     gsap.to(".gallery", {
@@ -15,6 +18,38 @@ window.onload = function () {
 
     modalBack.onclick = function () {
         closeModal();
+    }
+}
+
+window.onresize = resizeGrid;
+
+clickable.forEach(img => {
+    img.onclick = function () {
+        getModalSrc(img.querySelector("img"));
+        clickedIdx = clickable.indexOf(img);
+        openModal();
+    }
+})
+
+document.addEventListener("keydown", (e) => {
+    const keyCode = e.keyCode || e.which;
+    const key = e.key || e.keyIdentifier;
+
+    if (key === "ArrowLeft" || keyCode === 37) {
+        clickedIdx = (clickedIdx - 1 + clickable.length) % clickable.length;
+    } else if (key === "ArrowRight" || keyCode === 39) {
+        clickedIdx = (clickedIdx + 1) % clickable.length;
+    }
+    getModalSrc(clickable[clickedIdx].querySelector("img"));
+});
+
+
+function getModalSrc(img) {
+    const filename = img.src.replace(/^.*[\\\/]/, '');
+    if (window.location.href.indexOf("tskaltubo") !== -1) {
+        modalImg.src = "./img-tska/" + filename.replace("S", "L");
+    } else {
+        modalImg.src = "./img-main/" + filename.replace("S", "L");
     }
 }
 
@@ -55,6 +90,7 @@ function resizeGrid() {
 }
 
 function openModal() {
+    modalOpen = true;
     gsap.timeline({})
         .set(modalBack, {
             height: "100vh",
@@ -67,6 +103,7 @@ function openModal() {
 }
 
 function closeModal() {
+    modalOpen = false;
     gsap.timeline({})
         .to(modalBack, {
             duration: .25,
@@ -77,4 +114,3 @@ function closeModal() {
         })
 }
 
-window.onresize = resizeGrid;

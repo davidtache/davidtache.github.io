@@ -285,15 +285,6 @@
 
 <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
 <script src="./js/grid.js"></script>
-<script>
-    clickable.forEach(img => {
-        img.onclick = function () {
-            const filename = img.querySelector("img").src.replace(/^.*[\\\/]/, '');
-            modalImg.src = "./img-tska/" + filename.replace("S", "L");
-            openModal();
-        }
-    })
-</script>
 
 </body>
 </html>

@@ -32,15 +32,17 @@ clickable.forEach(img => {
 })
 
 document.addEventListener("keydown", (e) => {
-    const keyCode = e.keyCode || e.which;
-    const key = e.key || e.keyIdentifier;
+    if (modalOpen) {
+        const keyCode = e.keyCode || e.which;
+        const key = e.key || e.keyIdentifier;
 
-    if (key === "ArrowLeft" || keyCode === 37) {
-        clickedIdx = (clickedIdx - 1 + clickable.length) % clickable.length;
-    } else if (key === "ArrowRight" || keyCode === 39) {
-        clickedIdx = (clickedIdx + 1) % clickable.length;
+        if (key === "ArrowLeft" || keyCode === 37) {
+            clickedIdx = (clickedIdx - 1 + clickable.length) % clickable.length;
+        } else if (key === "ArrowRight" || keyCode === 39 || key === " " || keyCode === 32 || key === "Enter" || keyCode === 13) {
+            clickedIdx = (clickedIdx + 1) % clickable.length;
+        }
+        getModalSrc(clickable[clickedIdx].querySelector("img"));
     }
-    getModalSrc(clickable[clickedIdx].querySelector("img"));
 });
 
 

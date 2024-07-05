@@ -55,9 +55,9 @@ function getModalSrc(img) {
 }
 
 function resizeGrid() {
-    document.querySelector(".page").style.setProperty('--pic-padding', 0 + "px");
+    document.querySelector(".page").style.setProperty('--pic-padding', padding + "px");
     containerWidth = document.querySelector(".page").clientWidth;
-    
+
     rows.forEach(r => {
         const cols = Array.from(r.querySelectorAll(".col"));
 
@@ -65,16 +65,10 @@ function resizeGrid() {
         let totalAspectRatio = 0;
         cols.forEach((c, cIdx) => {
             const images = Array.from(c.querySelectorAll("img"));
-            let w = images[0].clientWidth, h = 0;
+            let w = images[0].clientWidth * 2 * padding, h = 0;
             images.forEach(image => {
-                h += image.clientHeight;
+                h += image.clientHeight * 2 * padding;
             });
-
-            colRatios[cIdx] = w / h;
-
-            if (images.length > 1) {
-                h += (images.length - 1) * padding; // this is cheating and not 100% correct
-            }
             colRatios[cIdx] = w / h;
         });
         
@@ -83,13 +77,11 @@ function resizeGrid() {
         });
 
         cols.forEach((c, cIdx) => {
-            const pxWidth = (containerWidth - (cols.length - 1) * padding) * colRatios[cIdx] / totalAspectRatio;
+            const pxWidth = containerWidth * colRatios[cIdx] / totalAspectRatio;
             c.style.width = (pxWidth / containerWidth * 100) + "%";
         });
-
     })
 
-    document.querySelector(".page").style.setProperty('--pic-padding', padding + "px");
 
 }
 

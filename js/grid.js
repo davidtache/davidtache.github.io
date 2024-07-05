@@ -1,6 +1,5 @@
 let containerWidth = document.querySelector(".page").clientWidth;
-const padding = 7;
-document.querySelector(".page").style.setProperty('--pic-padding', padding + "px");
+const padding = 5;
 const rows = Array.from(document.querySelectorAll(".row"));
 const clickable = Array.from(document.querySelectorAll(".img-container"));
 const modalBack = document.querySelector(".modal-back");
@@ -56,39 +55,42 @@ function getModalSrc(img) {
 }
 
 function resizeGrid() {
+    document.querySelector(".page").style.setProperty('--pic-padding', 0 + "px");
     containerWidth = document.querySelector(".page").clientWidth;
+    
     rows.forEach(r => {
         const cols = Array.from(r.querySelectorAll(".col"));
 
-        const colSizes = [];
-        cols.forEach(c => {
-            const images = Array.from(c.querySelectorAll("img"));
-            let w = images[0].naturalWidth, h = 0;
-            images.forEach(image => {
-                h += (image.naturalHeight);
-            });
-            colSizes.push([w, h]);
-        });
-
-        let totalAspectRatio = 0;
         const colRatios = [];
+        let totalAspectRatio = 0;
         cols.forEach((c, cIdx) => {
-            colRatios[cIdx] = colSizes[cIdx][0] / colSizes[cIdx][1];
-            if (c.classList.contains("fix-1")) {
-                colRatios[cIdx] += 3.5 * (padding / containerWidth);
-            } else if (c.classList.contains("fix-2")) {
-                colRatios[cIdx] += .95 * (padding / containerWidth);
-            } else if (c.classList.contains("fix-3")) {
-                colRatios[cIdx] += (padding / containerWidth);
+            const images = Array.from(c.querySelectorAll("img"));
+            let w = images[0].clientWidth, h = 0;
+            images.forEach(image => {
+                h += image.clientHeight;
+            });
+
+            colRatios[cIdx] = w / h;
+
+            if (images.length > 1) {
+                h += (images.length - 1) * padding; // this is cheating and not 100% correct
             }
+            colRatios[cIdx] = w / h;
+        });
+        
+        cols.forEach((c, cIdx) => {
             totalAspectRatio += colRatios[cIdx];
         });
 
         cols.forEach((c, cIdx) => {
-            let pxWidth = ((containerWidth - cols.length * padding) * colRatios[cIdx] / totalAspectRatio);
+            const pxWidth = (containerWidth - (cols.length - 1) * padding) * colRatios[cIdx] / totalAspectRatio;
             c.style.width = (pxWidth / containerWidth * 100) + "%";
         });
+
     })
+
+    document.querySelector(".page").style.setProperty('--pic-padding', padding + "px");
+
 }
 
 function openModal() {

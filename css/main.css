@@ -13,7 +13,7 @@ html, body {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    --pic-padding: 7px;
+    --pic-padding: 0px;
 }
 
 
@@ -84,19 +84,18 @@ html, body {
 
 .row {
     display: flex;
+    justify-content: space-between;
     padding-bottom: var(--pic-padding);
-    justify-content: space-around;
 }
 
 .col {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
-
-.col > *:not(:first-child) {
-    padding-top: var(--pic-padding);
-}
-
+/*.col:nth-child(1) {*/
+/*    padding-right: var(--pic-padding);*/
+/*}*/
 
 .img-container {
     width: 100%;

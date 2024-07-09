@@ -53,7 +53,7 @@ document.addEventListener('touchmove', (e) => {
             return;
         }
 
-        e.preventDefault();
+        // e.preventDefault();
 
         let xUp = e.touches[0].clientX;
         let yUp = e.touches[0].clientY;
@@ -89,7 +89,7 @@ modalBack.onclick = function (e) {
 
 document.addEventListener("keydown", (e) => {
     if (modalOpen) {
-        e.preventDefault();
+        // e.preventDefault();
 
         const keyCode = e.keyCode || e.which;
         const key = e.key || e.keyIdentifier;

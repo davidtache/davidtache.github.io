@@ -34,7 +34,16 @@ document.addEventListener('touchstart', (evt) => {
         const firstTouch = evt.touches[0];
         xDown = firstTouch.clientX;
         yDown = firstTouch.clientY;
+        document.body.classList.add('no-scroll');
     }
+}, false);
+document.addEventListener('touchend', (evt) => {
+    if (modalOpen) {
+        const firstTouch = evt.touches[0];
+        xDown = firstTouch.clientX;
+        yDown = firstTouch.clientY;
+    }
+    document.body.classList.remove('no-scroll');
 }, false);
 
 document.addEventListener('touchmove', (e) => {

@@ -14,10 +14,6 @@ window.onload = function () {
         duration: .2,
         opacity: 1
     })
-
-    modalBack.onclick = function () {
-        closeModal();
-    }
 }
 
 window.onresize = resizeGrid;
@@ -41,15 +37,17 @@ document.addEventListener('touchstart', (evt) => {
     }
 }, false);
 
-document.addEventListener('touchmove', (evt) => {
+document.addEventListener('touchmove', (e) => {
     if (modalOpen) {
 
         if (!xDown || !yDown) {
             return;
         }
 
-        let xUp = evt.touches[0].clientX;
-        let yUp = evt.touches[0].clientY;
+        e.preventDefault();
+
+        let xUp = e.touches[0].clientX;
+        let yUp = e.touches[0].clientY;
 
         let xDiff = xDown - xUp;
         let yDiff = yDown - yUp;
@@ -60,6 +58,8 @@ document.addEventListener('touchmove', (evt) => {
             } else {
                 clickedIdx = (clickedIdx + 1) % clickable.length;
             }
+        } else {
+            closeModal();
         }
 
         xDown = null;
@@ -69,8 +69,19 @@ document.addEventListener('touchmove', (evt) => {
     }
 }, false);
 
+modalBack.onclick = function (e) {
+    if (e.target.nodeName.toLowerCase() === "img") {
+        closeModal();
+    } else {
+        clickedIdx = (clickedIdx + 1) % clickable.length;
+        getModalSrc(clickable[clickedIdx].querySelector("img"));
+    }
+}
+
 document.addEventListener("keydown", (e) => {
     if (modalOpen) {
+        e.preventDefault();
+
         const keyCode = e.keyCode || e.which;
         const key = e.key || e.keyIdentifier;
 

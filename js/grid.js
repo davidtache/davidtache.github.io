@@ -30,6 +30,45 @@ clickable.forEach(img => {
     }
 })
 
+let xDown = null;
+let yDown = null;
+
+document.addEventListener('touchstart', (evt) => {
+    if (modalOpen) {
+        const firstTouch = evt.touches[0];
+        xDown = firstTouch.clientX;
+        yDown = firstTouch.clientY;
+    }
+}, false);
+
+document.addEventListener('touchmove', (evt) => {
+    if (modalOpen) {
+
+        if (!xDown || !yDown) {
+            return;
+        }
+
+        let xUp = evt.touches[0].clientX;
+        let yUp = evt.touches[0].clientY;
+
+        let xDiff = xDown - xUp;
+        let yDiff = yDown - yUp;
+
+        if (Math.abs(xDiff) > Math.abs(yDiff)) {
+            if (xDiff > 0) {
+                clickedIdx = (clickedIdx - 1 + clickable.length) % clickable.length;
+            } else {
+                clickedIdx = (clickedIdx + 1) % clickable.length;
+            }
+        }
+
+        xDown = null;
+        yDown = null;
+
+        getModalSrc(clickable[clickedIdx].querySelector("img"));
+    }
+}, false);
+
 document.addEventListener("keydown", (e) => {
     if (modalOpen) {
         const keyCode = e.keyCode || e.which;
@@ -81,8 +120,6 @@ function resizeGrid() {
             c.style.width = (pxWidth / containerWidth * 100) + "%";
         });
     })
-
-
 }
 
 function openModal() {

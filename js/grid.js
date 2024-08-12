@@ -79,7 +79,7 @@ document.addEventListener('touchmove', (e) => {
 }, false);
 
 modalBack.onclick = function (e) {
-    if (e.target.nodeName.toLowerCase() === "img") {
+    if (e.target.nodeName.toLowerCase() !== "img") {
         closeModal();
     } else {
         clickedIdx = (clickedIdx + 1) % clickable.length;

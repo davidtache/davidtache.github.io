@@ -89,7 +89,7 @@ modalBack.onclick = function (e) {
 
 document.addEventListener("keydown", (e) => {
     if (modalOpen) {
-        // e.preventDefault();
+        e.preventDefault();
 
         const keyCode = e.keyCode || e.which;
         const key = e.key || e.keyIdentifier;

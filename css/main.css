@@ -18,7 +18,7 @@ body.no-scroll {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    --pic-padding: 0px;
+    --pic-padding: 5px;
 }
 
 
@@ -35,8 +35,8 @@ body.no-scroll {
     justify-content: space-around;
     padding-top: 1em;
     margin-bottom: .5em;
-    background-color: rgba(255, 255, 255, .98);
-    z-index: 1;
+    background-color: #ffffff;
+    z-index: 3;
 }
 
 .header > * {
@@ -52,19 +52,18 @@ body.no-scroll {
     margin-top: 1em;
     display: flex;
     justify-content: flex-start;
+    padding-bottom: .2em;
     margin-bottom: .5em;
+    background-color: #eeeeee;
 }
+
 .header .navbar a {
-    display: inline-block;
     color: inherit;
-    text-transform: uppercase;
     text-decoration: none;
-    font-size: .8em;
     border-radius: 1px;
     user-select: none;
     padding: .4em;
 }
-
 .header .navbar a:hover {
     background-color: rgba(150, 150, 150, .1);
 }
@@ -75,8 +74,24 @@ body.no-scroll {
     font-weight: 600;
     pointer-events: none;
 }
-.header .navbar a.active span {
+.header .navbar a span {
     border-bottom: 2px solid black;
+    opacity: .8;
+}
+.header .navbar a.active span {
+    /*border-bottom: 2px solid black;*/
+    opacity: 1;
+}
+.header .navbar a.about-link {
+    margin-left: auto;
+}
+
+.about-page {
+    padding-top: 160px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 200px;
+    /*padding-left: var(--pic-padding);*/
 }
 
 .gallery {

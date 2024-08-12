@@ -106,8 +106,8 @@ document.addEventListener("keydown", (e) => {
 
 function getModalSrc(img) {
     const filename = img.src.replace(/^.*[\\\/]/, '');
-    if (window.location.href.indexOf("tskaltubo") !== -1) {
-        modalImg.src = "./img-tska/" + filename.replace("S", "L");
+    if (window.location.href.indexOf("tskhaltubo") !== -1) {
+        modalImg.src = "./img/" + filename.replace("S", "L");
     } else {
         modalImg.src = "./img-main/" + filename.replace("S", "L");
     }

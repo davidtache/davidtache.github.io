@@ -4,6 +4,7 @@ html, body {
     padding: 0;
     margin: 0;
     overscroll-behavior: none;
+    font-size: 15px;
 }
 
 body.no-scroll {
@@ -11,7 +12,7 @@ body.no-scroll {
 }
 
 .page {
-    font-family: "Montserrat", sans-serif;
+    font-family: Arial, sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -20,7 +21,6 @@ body.no-scroll {
     margin: 0 auto;
     --pic-padding: 5px;
 }
-
 
 .header {
     position: fixed;
@@ -55,6 +55,7 @@ body.no-scroll {
     padding-bottom: .2em;
     margin-bottom: .5em;
     background-color: #eeeeee;
+    /*letter-spacing: .1em;*/
 }
 
 .header .navbar a {
@@ -75,11 +76,11 @@ body.no-scroll {
     pointer-events: none;
 }
 .header .navbar a span {
-    /*border-bottom: 2px solid black;*/
+    border-bottom: 2px solid black;
     opacity: .8;
 }
 .header .navbar a.active span {
-    border-bottom: 2px solid black;
+    border-bottom: 0px solid black;
     opacity: 1;
 }
 .header .navbar a.about-link {

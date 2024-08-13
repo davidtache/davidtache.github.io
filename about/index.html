@@ -27,6 +27,13 @@
     <link rel="manifest" href="../assets/icons/site.webmanifest">
 
     <style>
+        .about-page {
+            width: 100%;
+            display: flex;
+            padding-left: var(--pic-padding);
+            padding-right: var(--pic-padding);
+
+        }
         .about-page a {
             color: inherit;
             text-decoration: none;
@@ -35,20 +42,31 @@
         .about-page a:hover {
             background-color: rgba(150, 150, 150, .1);
         }
-        .about-page {
-            width: 100%;
-            display: flex;
-        }
         .about-page .about-text {
-            width: 100%;
+            width: 60%;
             padding-right: .75em;
         }
-        .about-page img {
-            display: block;
+        .about-page .about-img-container {
             width: 40%;
+            max-height: none;
+        }
+        .about-page .about-img-container img {
+            max-height: none;
         }
         .about-page .about-text div {
             padding-bottom: .75em;
+        }
+
+
+        @media all and (max-width: 500px) {
+            .about-page {
+                width: calc(100% - 20px);
+                flex-direction: column;
+            }
+            .about-page .about-text,
+            .about-page .about-img-container {
+                width: 100%;
+            }
         }
     </style>
 
@@ -82,7 +100,9 @@
                 Basé dans le Caucase, il parcourt les vastes étendues d’Asie centrale pour documenter les enjeux humains et environnementaux de cette région.
             </div>
         </div>
-        <img src="./img/david-tache.jpeg">
+        <div class="about-img-container">
+            <img src="./img/david-tache.jpeg">
+        </div>
     </div>
 </div>
 

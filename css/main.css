@@ -5,6 +5,7 @@ html, body {
     margin: 0;
     overscroll-behavior: none;
     font-size: 15px;
+    font-family: Arial, sans-serif;
 }
 
 body.no-scroll {
@@ -12,7 +13,6 @@ body.no-scroll {
 }
 
 .page {
-    font-family: Arial, sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
@@ -127,21 +127,30 @@ img {
     position: relative;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
-    /*outline: var(--pic-padding) solid white;*/
 }
 
 .img-container .subtitle {
     position: absolute;
     left: 0;
     bottom: 15px;
-    padding: 4px 15px;
-    background-color: rgba(255, 255, 255, .7);
+    background-color: rgba(255, 255, 255, .6);
     opacity: 0;
     width: 100%;
+    /*display: none;*/
+}
+.img-container .subtitle > span {
+    display: inline-block;
+    font-size: .9em;
+    padding: .6em;
+}
+.img-container .subtitle span.subtitle-cut {
     display: none;
 }
 .img-container:hover img {
     filter: brightness(.7);
+}
+.img-container:hover .subtitle {
+    opacity: 1;
 }
 
 .modal-back {
@@ -160,15 +169,33 @@ img {
 }
 
 .modal {
+    /*margin-top: -65px;*/
+    /*height: calc(100% - 140px);*/
+    height: 85%;
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 90%;
-    width: 90%;
-    /*pointer-events: none;*/
+    flex-direction: column;
 }
+
 .modal img {
     width: auto;
-    max-height: 100%;
     max-width: 100%;
+}
+
+.modal .subtitle {
+    padding: .6em;
+    /*position: absolute;*/
+    /*bottom: 90px;*/
+    width: 80%;
+    max-width: 700px;
+    /*transform: translateY(100%);*/
+    text-align: center;
+}
+
+@media all and (max-width: 500px) {
+    .subtitle {
+        opacity: 0 !important;
+    }
 }

@@ -3,23 +3,26 @@ const padding = 5;
 const rows = Array.from(document.querySelectorAll(".row"));
 const clickable = Array.from(document.querySelectorAll(".img-container"));
 const modalBack = document.querySelector(".modal-back");
+const modalPicWrapper = document.querySelector(".modal > div");
 const modalImg = modalBack.querySelector("img");
+const modalSubtitle = modalBack.querySelector(".subtitle");
 
 let modalOpen = false;
 let clickedIdx = 0;
-
+gsap.to(".gallery", {
+    duration: .2,
+    opacity: 1
+})
 window.onload = function () {
     resizeGrid();
-    gsap.to(".gallery", {
-        duration: .2,
-        opacity: 1
-    })
+
 }
 
 window.onresize = resizeGrid;
 
 clickable.forEach(img => {
     img.onclick = function () {
+        getModalSubtitle(img.querySelector(".subtitle > span"));
         getModalSrc(img.querySelector("img"));
         clickedIdx = clickable.indexOf(img);
         openModal();
@@ -32,16 +35,16 @@ let yDown = null;
 document.addEventListener('touchstart', (evt) => {
     if (modalOpen) {
         const firstTouch = evt.touches[0];
-        xDown = firstTouch.clientX;
-        yDown = firstTouch.clientY;
+        xDown = firstTouch.pageX;
+        yDown = firstTouch.pageY;
         document.body.classList.add('no-scroll');
     }
 }, false);
 document.addEventListener('touchend', (evt) => {
     if (modalOpen) {
         const firstTouch = evt.touches[0];
-        xDown = firstTouch.clientX;
-        yDown = firstTouch.clientY;
+        xDown = firstTouch.pageX;
+        yDown = firstTouch.pageY;
     }
     document.body.classList.remove('no-scroll');
 }, false);
@@ -74,6 +77,7 @@ document.addEventListener('touchmove', (e) => {
         xDown = null;
         yDown = null;
 
+        getModalSubtitle(clickable[clickedIdx].querySelector(".subtitle > span"));
         getModalSrc(clickable[clickedIdx].querySelector("img"));
     }
 }, false);
@@ -83,6 +87,7 @@ modalBack.onclick = function (e) {
         closeModal();
     } else {
         clickedIdx = (clickedIdx + 1) % clickable.length;
+        getModalSubtitle(clickable[clickedIdx].querySelector(".subtitle > span"));
         getModalSrc(clickable[clickedIdx].querySelector("img"));
     }
 }
@@ -99,17 +104,43 @@ document.addEventListener("keydown", (e) => {
         } else if (key === "ArrowRight" || keyCode === 39 || key === " " || keyCode === 32 || key === "Enter" || keyCode === 13) {
             clickedIdx = (clickedIdx + 1) % clickable.length;
         }
+        getModalSubtitle(clickable[clickedIdx].querySelector(".subtitle > span"));
         getModalSrc(clickable[clickedIdx].querySelector("img"));
     }
 });
 
 
+function getModalSubtitle(subtitle) {
+    if (subtitle) {
+        modalSubtitle.innerHTML = subtitle.innerHTML;
+        modalSubtitle.style.display = "block";
+        modalSubtitle.style.height = "auto";
+    } else {
+        modalSubtitle.innerHTML = "";
+        if (window.location.href.indexOf("tskhaltubo")) {
+            modalSubtitle.style.height = "2em";
+        } else {
+            modalSubtitle.style.display = "none";
+        }
+    }
+}
+
 function getModalSrc(img) {
+
+    modalPicWrapper.style.opacity = 0;
+
     const filename = img.src.replace(/^.*[\\\/]/, '');
     if (window.location.href.indexOf("tskhaltubo") !== -1) {
         modalImg.src = "./img/" + filename.replace("S", "L");
     } else {
         modalImg.src = "./img-main/" + filename.replace("S", "L");
+    }
+
+    modalImg.onload = function () {
+        gsap.to(modalPicWrapper, {
+            duration: .5,
+            opacity: 1
+        })
     }
 }
 
@@ -140,6 +171,7 @@ function resizeGrid() {
             c.style.width = (pxWidth / containerWidth * 100) + "%";
         });
     })
+    
 }
 
 function openModal() {

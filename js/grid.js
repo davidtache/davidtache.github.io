@@ -3,12 +3,14 @@ const padding = 5;
 const rows = Array.from(document.querySelectorAll(".row"));
 const clickable = Array.from(document.querySelectorAll(".img-container"));
 const modalBack = document.querySelector(".modal-back");
-const modalPicWrapper = document.querySelector(".modal > div");
+const modalWrapper = document.querySelector(".modal");
 const modalImg = modalBack.querySelector("img");
 const modalSubtitle = modalBack.querySelector(".subtitle");
 
 let modalOpen = false;
 let clickedIdx = 0;
+let modalPicLoading = false;
+
 gsap.to(".gallery", {
     duration: .2,
     opacity: 1
@@ -22,8 +24,7 @@ window.onresize = resizeGrid;
 
 clickable.forEach(img => {
     img.onclick = function () {
-        getModalSubtitle(img.querySelector(".subtitle > span"));
-        getModalSrc(img.querySelector("img"));
+        getModalSrc(img.querySelector("img"), img.querySelector(".subtitle > span"));
         clickedIdx = clickable.indexOf(img);
         openModal();
     }
@@ -77,8 +78,7 @@ document.addEventListener('touchmove', (e) => {
         xDown = null;
         yDown = null;
 
-        getModalSubtitle(clickable[clickedIdx].querySelector(".subtitle > span"));
-        getModalSrc(clickable[clickedIdx].querySelector("img"));
+        getModalSrc(clickable[clickedIdx].querySelector("img"), clickable[clickedIdx].querySelector(".subtitle > span"));
     }
 }, false);
 
@@ -86,48 +86,40 @@ modalBack.onclick = function (e) {
     if (e.target.nodeName.toLowerCase() !== "img") {
         closeModal();
     } else {
-        clickedIdx = (clickedIdx + 1) % clickable.length;
-        getModalSubtitle(clickable[clickedIdx].querySelector(".subtitle > span"));
-        getModalSrc(clickable[clickedIdx].querySelector("img"));
+        if (!modalPicLoading) {
+            clickedIdx = (clickedIdx + 1) % clickable.length;
+            getModalSrc(clickable[clickedIdx].querySelector("img"), clickable[clickedIdx].querySelector(".subtitle > span"));
+        }
     }
 }
 
 document.addEventListener("keydown", (e) => {
     if (modalOpen) {
-        e.preventDefault();
+        // e.preventDefault();
 
         const keyCode = e.keyCode || e.which;
         const key = e.key || e.keyIdentifier;
 
-        if (key === "ArrowLeft" || keyCode === 37) {
-            clickedIdx = (clickedIdx - 1 + clickable.length) % clickable.length;
-        } else if (key === "ArrowRight" || keyCode === 39 || key === " " || keyCode === 32 || key === "Enter" || keyCode === 13) {
-            clickedIdx = (clickedIdx + 1) % clickable.length;
+        if (!modalPicLoading) {
+
+            if (key === "ArrowLeft" || keyCode === 37) {
+                clickedIdx = (clickedIdx - 1 + clickable.length) % clickable.length;
+            } else if (key === "ArrowRight" || keyCode === 39 || key === " " || keyCode === 32 || key === "Enter" || keyCode === 13) {
+                clickedIdx = (clickedIdx + 1) % clickable.length;
+            }
+            getModalSrc(clickable[clickedIdx].querySelector("img"), clickable[clickedIdx].querySelector(".subtitle > span"));
         }
-        getModalSubtitle(clickable[clickedIdx].querySelector(".subtitle > span"));
-        getModalSrc(clickable[clickedIdx].querySelector("img"));
     }
 });
 
 
-function getModalSubtitle(subtitle) {
-    if (subtitle) {
-        modalSubtitle.innerHTML = subtitle.innerHTML;
-        modalSubtitle.style.display = "block";
-        modalSubtitle.style.height = "auto";
-    } else {
-        modalSubtitle.innerHTML = "";
-        if (window.location.href.indexOf("tskhaltubo")) {
-            modalSubtitle.style.height = "2em";
-        } else {
-            modalSubtitle.style.display = "none";
-        }
-    }
-}
+function getModalSrc(img, subtitle) {
 
-function getModalSrc(img) {
-
-    modalPicWrapper.style.opacity = 0;
+    modalPicLoading = true;
+    gsap.to(modalWrapper, {
+        duration: .2,
+        opacity: 0
+    })
 
     const filename = img.src.replace(/^.*[\\\/]/, '');
     if (window.location.href.indexOf("tskhaltubo") !== -1) {
@@ -137,10 +129,25 @@ function getModalSrc(img) {
     }
 
     modalImg.onload = function () {
-        gsap.to(modalPicWrapper, {
-            duration: .5,
+        modalPicLoading = false;
+
+        gsap.to(modalWrapper, {
+            duration: .2,
             opacity: 1
         })
+
+        if (subtitle) {
+            modalSubtitle.innerHTML = subtitle.innerHTML;
+            modalSubtitle.style.display = "block";
+            modalSubtitle.style.height = "auto";
+        } else {
+            modalSubtitle.innerHTML = "";
+            if (window.location.href.indexOf("tskhaltubo")) {
+                modalSubtitle.style.height = "2em";
+            } else {
+                modalSubtitle.style.display = "none";
+            }
+        }
     }
 }
 
@@ -175,6 +182,8 @@ function resizeGrid() {
 }
 
 function openModal() {
+    document.body.style.overflow = 'hidden';
+
     modalOpen = true;
     gsap.timeline({})
         .set(modalBack, {
@@ -188,6 +197,8 @@ function openModal() {
 }
 
 function closeModal() {
+    document.body.style.overflow = '';
+
     modalOpen = false;
     gsap.timeline({})
         .to(modalBack, {

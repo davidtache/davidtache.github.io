@@ -104,10 +104,11 @@ document.addEventListener("keydown", (e) => {
 
             if (key === "ArrowLeft" || keyCode === 37) {
                 clickedIdx = (clickedIdx - 1 + clickable.length) % clickable.length;
+                getModalSrc(clickable[clickedIdx].querySelector("img"), clickable[clickedIdx].querySelector(".subtitle > span"));
             } else if (key === "ArrowRight" || keyCode === 39 || key === " " || keyCode === 32 || key === "Enter" || keyCode === 13) {
                 clickedIdx = (clickedIdx + 1) % clickable.length;
+                getModalSrc(clickable[clickedIdx].querySelector("img"), clickable[clickedIdx].querySelector(".subtitle > span"));
             }
-            getModalSrc(clickable[clickedIdx].querySelector("img"), clickable[clickedIdx].querySelector(".subtitle > span"));
         }
     }
 });

@@ -72,15 +72,15 @@ body.no-scroll {
     margin-left: -.35em;
 }
 .header .navbar a.active {
-    font-weight: 600;
+    color: #000000;
     pointer-events: none;
 }
 .header .navbar a span {
-    border-bottom: 2px solid black;
+    border-bottom: 0px solid black;
     opacity: .8;
 }
 .header .navbar a.active span {
-    border-bottom: 0px solid black;
+    border-bottom: 2px solid black;
     opacity: 1;
 }
 .header .navbar a.about-link {

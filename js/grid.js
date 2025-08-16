@@ -125,6 +125,8 @@ function getModalSrc(img, subtitle) {
     const filename = img.src.replace(/^.*[\\\/]/, '');
     if (window.location.href.indexOf("tskhaltubo") !== -1) {
         modalImg.src = "./img/" + filename.replace("S", "L");
+    } else if (window.location.href.indexOf("sloviansk") !== -1) {
+        modalImg.src = "./img/" + filename.replace("S", "L");
     } else {
         modalImg.src = "./img-main/" + filename.replace("S", "L");
     }
